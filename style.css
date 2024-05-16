@@ -1,0 +1,259 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+/*=============== VARIABLES CSS ===============*/
+:root {
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --white-color: hsl(0, 0%, 100%);
+  --black-color: hsl(0, 0%, 0%);
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: "Poppins", sans-serif;
+  --h1-font-size: 1.75rem;
+  --normal-font-size: 1rem;
+  --small-font-size: .813rem;
+  /*========== Font weight ==========*/
+  --font-medium: 500;
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body,
+input,
+button {
+  font-size: var(--normal-font-size);
+  font-family: var(--body-font);
+}
+
+body {
+  color: var(--white-color);
+}
+
+input,
+button {
+  border: none;
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/*=============== LOGIN ===============*/
+.login {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+.login__img {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  object-position: center;
+}
+.Login-form h1,
+.Register-form h1{
+  font-size: 39px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: .7rem 0;
+}
+.Form-box{
+  position: relative;
+  width: 500px;
+  height: 540px;
+  backdrop-filter: blur(40px);
+  color: var(--white-color);
+  font-size: 20px;
+  border: 2px solid var(--white-color);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform .6s ease, height .2s ease-in-out;
+}
+.Form-box form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transition: all .5s ease;
+}
+.Form-box .Register-form{
+  transform: translateX(-100%);
+}
+
+.Register-form .input-box, 
+.Login-form .input-box{
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid white;
+  position: relative;
+  margin: 20px 0 40px 0;
+}
+.input-box input{
+  width: 90%;
+  position: relative;
+  color: var(--white-color);
+  font-size: 18px;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.Login-form .input-box input:focus + label,
+.Login-form .input-box input:not(:placeholder-shown) + label {
+  top: -20px;
+  left: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  opacity: 1;
+  transition: all 0.3s ease-in-out;
+  pointer-events: none;
+  position: absolute;
+}
+.Login-form .input-box label{
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  transition: all 0.3s ease-in-out;
+  pointer-events: none;
+  opacity: 0.7;
+  font-size: 22px;
+}
+.Register-form .input-box label {
+  position: absolute;
+  top: 13px;
+  left: 10px;
+  transition: all 0.3s ease-in-out;
+  pointer-events: none;
+  opacity: 0.5;
+  font-size: 21px;
+  transform: translateY(-25px);
+}
+
+.Register-form .input-box input:focus + label {
+  top: 7px;
+  left: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--white-color);
+  opacity: 1;
+  transition: all 0.3s ease-in-out;
+  pointer-events: none;
+  position: absolute;
+}
+
+.input-box i{
+  font-size: 21px;
+}
+.checkbox{
+  width: 80%;
+  font-size: 17px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 30px;
+}
+.Register-form .checkbox{
+  display: unset;
+  margin-top: 5px;
+}
+.submit-btn{
+  width: 80%;
+  border: none;
+  border-radius: 20px;
+  margin: 27px 0 10px 0px;
+  padding: 15px 0;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--black-color);
+  background-color: var(--white-color);
+  cursor: pointer;
+}
+.submit-btn:hover{
+  background-color: rgb(219, 180, 132);
+  color: var(--white-color);
+}
+.Form-box span,
+.checkbox label,
+.checkbox input{
+  cursor: pointer;
+}
+.Form-box span{
+  font-size: 17px;
+  padding: .4rem 0;
+  position: relative;
+  transition: .5s ease-in-out;
+}
+.Form-box .Login-btn a:hover,
+.Form-box .Register-btn a:hover{
+  color:rgb(153, 117, 72);
+}
+.Form-box .Login-btn a:hover::after,
+.Form-box .Register-btn a:hover::after{
+  content: "";
+  width: 25%;
+  height: 2px;
+  position: absolute;
+  left: 76%;
+  top: 100%;
+  margin-top: 1px;
+  background-color: var(--white-color);
+}
+.Form-box .Login-btn a:hover::after{
+  top: 92%;
+  margin-top: 0;
+}
+.change-form{
+  height: 580px;
+  transition: .6s ease-in-out;
+}
+.change-form .Login-form{
+  transform: translateX(100%);
+}
+.change-form .Register-form{
+  transform: translateX(0%);
+}
+#loginEmailError,#loginPasswordError,
+#registerNameError,#registerEmailError,
+#registerPasswordError{
+  position: absolute;
+  top: 40px;
+  color: red;
+  font-size: 13px;
+
+}
+
+
+
+/*=============== BREAKPOINTS ===============*/
+/* For medium devices */
+@media screen and (min-width: 576px) {
+  .login {
+    justify-content: center;
+  }
+  .login__form {
+    width: 332px;
+    padding: 4rem 3rem 3.5rem;
+    border-radius: 1.5rem;
+  }
+  .login__title {
+    font-size: 2rem;
+  }
+}
