@@ -40,19 +40,20 @@ todoInput.addEventListener("keydown", (e) => {
 
 // Remove todo from local storage
 function removeTodo(index) {
-  const todos = JSON.parse(localStorage.getItem("todos"));
-  todos.splice(index.length-1, 1);
+  let todos = JSON.parse(localStorage.getItem("todos"));
+  // If there are no todos, exit the function
+  if (!todos) return; 
+// Remove the item at the given index
+  todos.splice(index, 1); 
   localStorage.setItem("todos", JSON.stringify(todos));
 }
 
 // Function completed for local storage
 function completeTodo(index, isComplete) {
-  const todos = JSON.parse(localStorage.getItem("todos")) || [];
-  if (todos[index]) {
-    todos[index].isCompleted = isComplete;
-    localStorage.setItem("todos", JSON.stringify(todos));
+  const todos = JSON.parse(localStorage.getItem("todos"));
+  todos[index].isCompleted = isComplete;
+  localStorage.setItem("todos", JSON.stringify(todos));
   }  
-}
 
 
 // Function to create todo element
@@ -86,14 +87,17 @@ function makeTodoElement(todoArray) {
       currentCard.classList.toggle("complete");
     });
 
+   
     trashButton.addEventListener("click", () => {
       const currentCard = trashButton.parentElement;
       currentCard.classList.add("fall");
       const indexOfCurrentCard = [
-        ...document.querySelectorAll(".todo .todo-item")]
-        .indexOf(currentCard.querySelector(".todo-item"));
+        ...document.querySelectorAll(".todo .todo-item")
+      ].indexOf(currentCard.querySelector(".todo-item"));
       removeTodo(indexOfCurrentCard);
-      
+      currentCard.addEventListener("transitionend", () => {
+        currentCard.remove();
+      });
     });
 
     todoList.appendChild(todoDiv);
